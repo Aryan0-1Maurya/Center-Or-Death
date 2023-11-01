@@ -1,0 +1,191 @@
+<!-- 
+
+      ************************************************************
+      
+           ++++++++++++++    --------    +++++++++++++++++
+
+{   By ~Aryan Maurya Mr.perfect https://amsrportfolio.netlify.app  }
+
+           ++++++++++++++    --------    +++++++++++++++++
+
+      ************************************************************
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Aryan Maurya">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="description"
+        content="This is online center or death game build for your imporove thing skill in this domain by aryan maurya enjoy your game">
+    <meta name="keywords"
+        content="center or deth ,fight death,center game,death game ,come on center , best game,online games,play games,  online , games player , online  game,online games hub, fun free, online , game by aryan , aryan sir, aryan sir game">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Center Or Death</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- <div id="debug">
+        Debug Messages Here
+    </div> -->
+
+
+    <canvas id="cnvs"></canvas>
+    <button onclick="init_game()" id="restartBtn">Restart?</button>
+
+    <div id="banner">
+        <div id="bannerInfo">
+            <div>
+
+                <h1>CONFIGURATIONS ⚙</h1>
+
+                <!-- TOUCH CONTROL -->
+                <input type="checkbox" id="enableTouchControl" checked>
+                <label for="enableTouchControl"> Enable Touch Controllers</label>
+                <br>
+                <!-- Portrait Landscape -->
+                <input type="checkbox" id="enableLandscapeMode">
+                <label for="enableLandscapeMode"> Force Landscape Mode</label>
+                <br>
+                <!-- CLICK TO SHOOT -->
+                <input type="checkbox" id="clickToShootMode">
+                <label for="clickToShootMode"> Click To Shoot (click with mouse to shoot bullets)</label>
+                <br>
+
+            </div>
+            <br>
+            <br>
+            <h1>Game Instruction 📜</h1>
+            <p>
+            <ul>
+                <li>
+                    #1 Wear haedphones 🎧 for best experience <br>
+                    because sound effects are really amazing 😄.
+                    <br>
+                    <small> (i got them from some random sites) </small>
+
+                </li>
+
+                <li>
+                    The Falling Moon 🌑 is your enemy Shoot it down before it hits spikes or on your head 🤕.
+                </li>
+
+                <li>
+                    Keep it in center by shooting bullets to get more score.
+                    <br>
+                    <!-- Easter egg : Dont kill the moon quickly to get even more scores -->
+                </li>
+                <li>
+                    you get <span style="color:tomato"> &plus;1000 </span> Score after winnig.
+                </li>
+            </ul>
+            <br>
+            Dont forget to share your scores 😉.
+
+            <h1>Touch Controls 📱</h1>
+            <ul>
+                <li>
+                    touch and drag to move the tank Left or right and to aim
+                    <div class="joyStickSample"> </div>
+
+                </li>
+                <li>
+                    tap on shoot button to shoot bullets
+                    <!-- <img src="" alt="Joystick Controller image"> -->
+                    <div class="shootButtonSample"> </div>
+                </li>
+            </ul>
+            <h1>PC Controls 💻</h1>
+
+            <ul>
+                <li> Use <kbd>A</kbd> / <kbd>Left Arrow</kbd> to move left </li>
+                <li> Use <kbd>D</kbd> / <kbd>Right Arrow</kbd> to move left </li>
+                <li> Use <kbd>W</kbd> / <kbd>Up Arrow</kbd> to shoot bullets </li>
+                <li>
+                    Use Mouse to aim / shoot
+                    <br>
+                    <br>
+                    ( or )
+                    <br>
+                    <br>
+                    <kbd>Q</kbd> <kbd>E</kbd> to rotate left , rotate right respectively.
+                </li>
+            </ul>
+
+            <h1><a href="https://amsrportfolio.netlify.app/">Developer Portfolio</a></h1>
+            <h3>
+                Source code & any info contact :
+                <a href="https://amsrportfolio.netlify.app/contact"> <small> click here to check it
+                        out</small></a>
+            </h3>
+
+            <small> Must play it once on your pc it looks amazing on wide and big screen 😄 </small>
+
+            </p>
+        </div>
+        <button onclick="main()">Start</button>
+    </div>
+
+    <div id="loader">
+        <div id="loadStatus">
+        </div>
+        Loading
+    </div>
+
+
+
+
+
+
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/dependencies/Vec2.js"></script>
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/dependencies/UTILS.js"></script>
+
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/soundPool.js"></script>
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/touch_controllers.js"></script>
+
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/particle.js"></script>
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/particle_system.js"></script>
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/bullet.js"></script>
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/enemy.js"></script>
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/player.js"></script>
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/StarBuildingScene.js"></script>
+
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/input_handler.js"></script>
+    <script src="https://prashanthkumar0.github.io/Center-Or-Death-2/scripts/game_main.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+         Swal.fire({
+    icon: 'success',
+    title:"Welcome of AmsrGameHub",
+    showConfirmButton: false,
+    timer: 1500
+  })
+    </script>
+</body>
+
+</html>
+
+<!-- 
+
+      ************************************************************
+      
+           ++++++++++++++    --------    +++++++++++++++++
+
+{   By ~Aryan Maurya Mr.perfect https://amsrportfolio.netlify.app  }
+
+           ++++++++++++++    --------    +++++++++++++++++
+
+      ************************************************************
+ -->
